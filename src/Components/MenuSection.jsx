@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import MenuSectionItem from "./MenuSectionItem";
 import { v4 as uuidv4 } from "uuid";
 
-const MenuSection = ({ section, onAddSectionItem,onDeleteSectionItem}) => {
+const MenuSection = ({ section, deliteMenuSection,updateSection }) => {
 
 
     const [menuSectionModal, setMenuSectionModal] = useState(section);
-    const localSection = menuSectionModal;
+    const [titleInput, setTitleInput] = useState(menuSectionModal.title);
 
     const addItem = () => {
         let newItems = menuSectionModal.items;
@@ -19,35 +19,65 @@ const MenuSection = ({ section, onAddSectionItem,onDeleteSectionItem}) => {
         }
         newItems.push(newItem);
         setMenuSectionModal({ ...menuSectionModal, items: newItems });
-        onAddSectionItem(menuSectionModal);
     }
 
-    const deleteSectionItem =(modal)=>{
+    const deleteSectionItem = (index) => {
+        let newItems = [];
+        if (menuSectionModal.items.length == 1) {
+            newItems = [];
+        } else {
+            for(let i = 0; i < menuSectionModal.items.length; i++ ){
+                if ( i !== index ){
+                    newItems[i] = menuSectionModal.items[i];
+                }
+            }
+            
+
+        }
+        
+        setMenuSectionModal({...menuSectionModal,items:newItems
+        });
        
 
-        let items = menuSectionModal.items;
-        let newItems = items.filter(item=>item.id !== modal.id);
-        localSection.items= newItems;
+    }
+  
+    const updateSectionItemsModal = (modal)=>{
+        let newItems =[];
+        for( let i = 0; i < menuSectionModal.items.length; i++){
+            if ( menuSectionModal.items[i].id !== modal.id ){
+                newItems[i]=menuSectionModal.items[i];
+            }else{
+                newItems[i]=modal;
+            }
+        }
 
-        // setMenuSectionModal({});
+        setMenuSectionModal({...menuSectionModal,items:newItems});
 
-        setMenuSectionModal(section);
+
 
     }
+    const deleteSection= (id)=>{
+        deliteMenuSection(id);
+    }
+    const setTitle =(e)=>{
+        setTitleInput(e.target.value);
+        setMenuSectionModal({...menuSectionModal,title:e.target.value})
+    }
     useEffect(() => {
-        console.log(menuSectionModal);
+        updateSection(menuSectionModal);
+
     }, [menuSectionModal]);
 
 
 
     return (
         <div className="p-3 w-5/6 border border-2 border-gray-500 mt-2 relative">
-            <div className="absolute top-0 right-0  px-2 bg-red-500 font-bold hover:cursor-pointer">
+            <div className="absolute top-0 right-0  px-2 bg-red-500 font-bold hover:cursor-pointer" onClick={e=>deleteSection(menuSectionModal.id)}>
                 x
             </div>
             <div className="w-64  self-center md:self-start mb-3">
                 <h1>
-                    <input className="p-2 rounded-sm bg-gray-200" type="text" placeholder="Set section Title" />
+                    <input className="p-2 rounded-sm bg-gray-200" type="text" placeholder="Set section Title" onChange={e=>(setTitle(e))}/>
                 </h1>
             </div>
             <div className="flex overflow-x-auto space-x-4 p-4">
@@ -62,8 +92,8 @@ const MenuSection = ({ section, onAddSectionItem,onDeleteSectionItem}) => {
 
                 <div className="flex justify-start gap-2">
                     {
-                       localSection.items.map((item, ind) => (
-                            <MenuSectionItem key={ind} index={ind} item={item} deleteSectionItem={deleteSectionItem}/>
+                        menuSectionModal.items.map((item, ind) => (
+                            <MenuSectionItem key={ind} index={ind} item={item} deleteSectionItem={deleteSectionItem} updateSectionItemsModal={updateSectionItemsModal}/> 
                         ))
                     }
 

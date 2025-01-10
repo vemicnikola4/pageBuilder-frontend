@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const Menu = () => {
 
-    const { themes, currentTheme } = useContext(PageContext);
+    const { themes, currentTheme,fontFamily } = useContext(PageContext);
 
     const [themeInUse, setThemeInUse] = useState(themes.menu[currentTheme]);
 
@@ -32,9 +32,7 @@ const Menu = () => {
         }
     ]);
 
-     useEffect(() => {
-        console.log(menuSections)
-     }, [menuSections]);
+    
 
     const addMenuSection = () => {
         const newSection = {
@@ -54,7 +52,6 @@ const Menu = () => {
     }
    
     const onAddSectionItem = (section)=>{
-        console.log(section);
 
     }
     const onDeleteSectionItem=()=>{
@@ -62,27 +59,28 @@ const Menu = () => {
 
         // console.log(sectionId,itemId);
     }
-    // const updateSection = (modal) => {
+     const updateSection = (modal) => {
+        let newSections =[];
 
-    //     let m = menuSections;
-    //      m.map((section,ind)=>section.id == modal.id ? m.splice(ind,1,modal) : null);
-    //     setMenuSections((prevItems)=>{
-    //         return m;
-    //     });
-    //     console.log(menuSections);
+        for( let i = 0; i < menuSections.length; i++ ){
+            if ( menuSections[i].id !== modal.id ){
+                newSections.push( menuSections[i]);
+            }else{
+                let modalItems = [];
+                for( let i = 0; i < modal.items.length; i++ ){
+                    if( modal.items[i] ){
+                        modalItems.push(modal.items[i]);
+                    }
+                }
+                modal.items = modalItems;
+                newSections.push( modal);
+            }
+        }
+        
+         setMenuSections(newSections);
 
-    // }
+     }
 
-    const addMenuSectionItem = (sectionId, newItem) => {
-
-        let a = menuSections;
-        a.map((section) => (
-            section.id == sectionId ? section.items.push(newItem) : null
-        ));
-
-
-        setMenuSections(a);
-    }
     const deliteMenuSection = (id) => {
 
         setMenuSections((prevItems) => {
@@ -94,10 +92,12 @@ const Menu = () => {
 
     }
    
-    
+    useEffect(() => {
+        console.log(menuSections);
+     }, [menuSections]);
 
     return (
-        <div className={"h-fit py-6 " + themeInUse.main}>
+        <div id="menuSection" className={"h-fit py-6 " + themeInUse.main + " " + fontFamily}>
             <div id="createMenuTitleDiv" className="md:p-8">
                 <h1 className={"text-md sm:text-md md:text-4xl text-center md:text-start " + themeInUse.title}>Create Your Menu items</h1>
             </div>
@@ -113,12 +113,12 @@ const Menu = () => {
             <div className="py-6 flex flex-col items-center w-full ">
                 {
                     menuSections.map((section) => (
-                        <MenuSection key={section.id} section={section} onAddSectionItem={onAddSectionItem} onDeleteSectionItem={onDeleteSectionItem}/>
+                        <MenuSection key={section.id} section={section} onDeleteSectionItem={onDeleteSectionItem} deliteMenuSection={deliteMenuSection} updateSection={updateSection}/>
 
                     ))
                 }
             </div>
-            <div className="py-3 mb-3 flex self-center w-5/6">
+            <div className="py-3 mb-3 flex self-centerw-full md:w-5/6">
                 <div className="mt-2 w-full flex justify-center md:justify-end ">
                     <div className="w-32 py-3 p-6 rounded-sm bg-blue-500 bg-opacity-80 hover:bg-opacity-90 hover:cursor-pointer">SAVE</div>
                 </div>

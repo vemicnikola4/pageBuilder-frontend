@@ -46,7 +46,8 @@ const PageContextProvider = (props) => {
     {
         hero: {
             light: {
-                menuDiv: 'bg-gray-300 opacity-80 border-b-2 border-b-gray-300 text-gray-900 ',
+                menuDiv: 'bg-gray-300 bg-opacity-70 border-b-2 border-b-gray-100  ',
+                dropDownMenu: 'bg-gray-300 text-gray-700',
                 selectThemeInput: 'bg-gray-300  opacity-80 text-gray-900 ',
                 setBgDiv: {
                     main: "bg-gray-300 border-2 border-gray-300 bg-opacity-70 shadow-sm hover:shadow-lg",
@@ -62,7 +63,9 @@ const PageContextProvider = (props) => {
 
             },
             dark: {
-                menuDiv: 'bg-gray-900 opacity-80 border-b-2 border-b-gray-700 text-white ',
+                menuDiv: 'bg-gray-900 bg-opacity-70 border-b-2 border-b-gray-100 text-white ',
+                dropDownMenu: 'bg-gray-700 text-white',
+
                 selectThemeInput: 'bg-gray-700 text-white ',
                 setBgDiv: {
                     main: "bg-gray-900 border-2 border-gray-700  bg-opacity-70 shadow-sm hover:shadow-lg ",
@@ -78,6 +81,7 @@ const PageContextProvider = (props) => {
             },
             blue: {
                 menuDiv: 'bg-blue-200  bg-opacity-70 border-b-2 border-b-gray-100 text-black ',
+                dropDownMenu: 'bg-blue-200 text-black',
                 selectThemeInput: 'bg-blue-200  bg-opacity-70 text-black ',
                 setBgDiv: {
                     main: "bg-blue-200 border-2 border-gray-100  bg-opacity-70 shadow-sm hover:shadow-lg ",
@@ -92,7 +96,8 @@ const PageContextProvider = (props) => {
                 }
             },
             red: {
-                menuDiv: 'bg-red-200  opacity-70 border-b-2 border-b-gray-100 text-black ',
+                menuDiv: 'bg-red-200 bg-opacity-70 border-b-2 border-b-gray-100 text-black ',
+                dropDownMenu: 'bg-red-200 text-black',
                 selectThemeInput: 'bg-red-200  bg-opacity-70 text-black ',
                 setBgDiv: {
                     main: "bg-red-200 border-2 border-gray-100  bg-opacity-70 shadow-sm hover:shadow-lg ",
@@ -107,7 +112,9 @@ const PageContextProvider = (props) => {
                 }
             },
             purple: {
-                menuDiv: 'bg-purple-200  opacity-70 border-b-2 border-b-gray-100 text-black ',
+                menuDiv: 'bg-purple-200  bg-opacity-70 border-b-2 border-b-gray-100 text-black ',
+                dropDownMenu: 'bg-purple-200 text-black',
+
                 selectThemeInput: 'bg-purple-200  bg-opacity-70 text-black ',
                 setBgDiv: {
                     main: "bg-purple-200 border-2 border-gray-100  bg-opacity-70 shadow-sm hover:shadow-lg ",
@@ -122,7 +129,9 @@ const PageContextProvider = (props) => {
                 }
             },
             yellow: {
-                menuDiv: 'bg-yellow-200  opacity-70 border-b-2 border-b-gray-100 text-black ',
+                menuDiv: 'bg-yellow-200  bg-opacity-70 border-b-2 border-b-gray-100 text-black ',
+                dropDownMenu: 'bg-yellow-200 text-black',
+
                 selectThemeInput: 'bg-yellow-200  bg-opacity-70 text-black ',
                 setBgDiv: {
                     main: "bg-yellow-200 border-2 border-gray-100  bg-opacity-70 shadow-sm hover:shadow-lg ",
@@ -137,7 +146,9 @@ const PageContextProvider = (props) => {
                 }
             },
             green: {
-                menuDiv: 'bg-green-200  opacity-70 border-b-2 border-b-gray-100 text-black ',
+                menuDiv: 'bg-green-200  bg-opacity-70 border-b-2 border-b-gray-100 text-black ',
+                dropDownMenu: 'bg-green-200 text-black',
+
                 selectThemeInput: 'bg-green-200  bg-opacity-70 text-black ',
                 setBgDiv: {
                     main: "bg-green-200 border-2 border-gray-100  bg-opacity-70 shadow-sm hover:shadow-lg ",
@@ -155,11 +166,12 @@ const PageContextProvider = (props) => {
         aboutUs: {
             light: {
                 main: 'bg-gray-300  text-gray-900 ',
-                textBox: 'bg-gray-300 '
+                textBox: 'bg-gray-300 ',
+                input: 'bg-gray-300  opacity-80 text-gray-900 ',
             },
             dark: {
-                main: 'bg-gray-800 ',
-                textBox: 'bg-gray-800 text-white '
+                main: 'bg-gray-700 ',
+                textBox: 'bg-gray-700 text-white '
 
 
             },
@@ -194,48 +206,169 @@ const PageContextProvider = (props) => {
         menu:{
             light: {
                 main: 'bg-gray-300  text-gray-900 ',
-                title: 'text-gray-900'
+                title: 'text-gray-900',
+                input: 'bg-gray-100 bg-opacity-50 border-b-1 text-gray-700',
             },
             dark: {
-                main: 'bg-gray-800 ',
-                title: 'text-white'
-
+                main: 'bg-gray-700 ',
+                title: 'text-white',
+                input: 'bg-gray-100 bg-opacity-50 border-b-1 text-white ',
 
             },
             blue: {
                 main: 'bg-blue-200 text-black',
-                title: 'text-black'
+                title: 'text-black',
+                input: 'bg-blue-100 bg-opacity-50 border-b-1 text-black ',
 
 
             },
             red: {
                 main: 'bg-red-200  text-black',
-                title: 'text-black'
+                title: 'text-black',
+                input: 'bg-red-100 bg-opacity-50 border-b-1 text-black ',
+
 
 
             },
             purple: {
                 main: 'bg-purple-200   text-black ',
-                title: 'text-black'
+                title: 'text-black',
+                input: 'bg-purple-100 bg-opacity-50 border-b-1 text-black ',
+
 
             },
             yellow: {
                 main: 'bg-yellow-200  text-black ',
-                title: 'text-black'
+                title: 'text-black',
+                input: 'bg-yellow-100 bg-opacity-50 border-b-1 text-black ',
+
 
             },
             green: {
-                main: 'bg-green-200  0 text-black ',
-                title: 'text-black'
+                main: 'bg-green-200   text-black ',
+                title: 'text-black',
+                input: 'bg-green-100 bg-opacity-50 border-b-1 text-black ',
                 
 
             }
+        },
+        footer:{
+            light: {
+                main: 'bg-gray-400  text-gray-900 ',
+                title: 'text-gray-900',
+                input: 'bg-gray-100 bg-opacity-50 border-b-1 text-gray-700',
+            },
+            dark: {
+                main: 'bg-gray-900 ',
+                title: 'text-white',
+                input: 'bg-gray-300 bg-opacity-50 border-b-1 text-white ',
+
+            },
+            blue: {
+                main: 'bg-blue-300 text-black',
+                title: 'text-black',
+                input: 'bg-blue-100 bg-opacity-50 border-b-1 text-black ',
+
+
+            },
+            red: {
+                main: 'bg-red-300  text-black',
+                title: 'text-black',
+                input: 'bg-red-100 bg-opacity-50 border-b-1 text-black ',
+
+
+
+            },
+            purple: {
+                main: 'bg-purple-300   text-black ',
+                title: 'text-black',
+                input: 'bg-purple-100 bg-opacity-50 border-b-1 text-black ',
+
+
+            },
+            yellow: {
+                main: 'bg-yellow-300  text-black ',
+                title: 'text-black',
+                input: 'bg-yellow-100 bg-opacity-50 border-b-1 text-black ',
+
+
+            },
+            green: {
+                main: 'bg-green-300   text-black ',
+                title: 'text-black',
+                input: 'bg-green-100 bg-opacity-50 border-b-1 text-black ',
+                
+
+            }
+        },
+        tagsSection:{
+                light: {
+                    main: 'bg-gray-300  text-gray-900 ',
+                    title: 'text-gray-900',
+                    input: 'bg-gray-100 bg-opacity-50 border-b-1 text-gray-700',
+                },
+                dark: {
+                    main: 'bg-gray-700 ',
+                    title: 'text-white',
+                    input: 'bg-gray-100 bg-opacity-50 border-b-1 text-white ',
+    
+                },
+                blue: {
+                    main: 'bg-blue-200 text-black',
+                    title: 'text-black',
+                    input: 'bg-blue-100 bg-opacity-50 border-b-1 text-black ',
+    
+    
+                },
+                red: {
+                    main: 'bg-red-200  text-black',
+                    title: 'text-black',
+                    input: 'bg-red-100 bg-opacity-50 border-b-1 text-black ',
+    
+    
+    
+                },
+                purple: {
+                    main: 'bg-purple-200   text-black ',
+                    title: 'text-black',
+                    input: 'bg-purple-100 bg-opacity-50 border-b-1 text-black ',
+    
+    
+                },
+                yellow: {
+                    main: 'bg-yellow-200  text-black ',
+                    title: 'text-black',
+                    input: 'bg-yellow-100 bg-opacity-50 border-b-1 text-black ',
+    
+    
+                },
+                green: {
+                    main: 'bg-green-200   text-black ',
+                    title: 'text-black',
+                    input: 'bg-green-100 bg-opacity-50 border-b-1 text-black ',
+                    
+    
+                }
         }
 
     };
-    const [currentTheme, setCurrentTheme] = useState('light');
+    const textAligment = {
+        aboutUs:{
+            center: 'text-center',
+            left:'text-start',
+            right:'text-end',
+        }
+
+    }
+    const [currentTheme, setCurrentTheme] = useState('dark');
+    const [fontFamily, setFontFamily] = useState('font-mono');
+    const [contactInfo, setContactInfo] = useState({
+        phone:'Paste phone number',
+        instagram:'Paste instagram profile',
+        facebook:'Paste facebook profile',
+    });
     return (
-        <PageContext.Provider value={{ themes, currentTheme, setCurrentTheme, textBoxPosition }}>
+        <PageContext.Provider value={{ themes, currentTheme, setCurrentTheme, textBoxPosition,textAligment,contactInfo,setContactInfo,fontFamily,setFontFamily}}>
             {props.children}
         </PageContext.Provider>
     )
